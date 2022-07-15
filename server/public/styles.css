@@ -1,0 +1,12 @@
+/* font-family: 'Just Another Hand', cursive;
+font-family: 'Karla', sans-serif;
+font-family: 'Rubik', sans-serif; */
+
+.app-name {
+  font-family: "Just Another Hand", cursive;
+  font-size: 2rem;
+}
+
+.bg-stormcloud {
+  background-color: #4b6869;
+}

@@ -1,10 +1,7 @@
 import React from 'react';
-import HelloWorld from '../components/hello-world';
 
-export default function Home(props) {
-  return (
-    <div>
-      <HelloWorld />
-    </div>
-  );
+function Home(props) {
+  return <h1>React Home</h1>;
 }
+
+export default Home;
