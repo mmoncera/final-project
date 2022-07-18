@@ -3,7 +3,7 @@ import React from 'react';
 function Header() {
   return (
     <header>
-      <nav className="navbar navbar-dark py-0 bg-stormcloud">
+      <nav className="navbar navbar-dark py-0 bg-primary">
         <div className="container">
           <a href="#" className="navbar-brand app-name">
             Evently
