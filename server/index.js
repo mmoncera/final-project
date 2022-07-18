@@ -27,8 +27,6 @@ app.use(express.json());
 
 app.post('/api/auth/sign-up', (req, res, next) => {
   const { username, password } = req.body;
-  // console.log('username:', username);
-  // console.log('password:', password);
   if (!username || !password) {
     throw new ClientError(400, 'username and password are required fields');
   }

@@ -21,6 +21,7 @@ function AuthForm() {
       .then(res => res.json())
       .then(result => {
         window.location.hash = '#sign-in';
+        setUserInfo({ username: '', password: '' });
       });
   }
 
