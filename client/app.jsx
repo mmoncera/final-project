@@ -12,7 +12,7 @@ function App() {
     window.addEventListener('hashchange', () => {
       setRoute(parseRoute(window.location.hash));
     });
-  });
+  }, []);
 
   return (
     <>
