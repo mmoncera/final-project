@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
-function AuthForm() {
+function AuthForm(props) {
   const [userInfo, setUserInfo] = useState({ username: '', password: '' });
+  const { action, onSignIn } = props;
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -17,18 +18,55 @@ function AuthForm() {
       },
       body: JSON.stringify(userInfo)
     };
-    fetch('/api/auth/sign-up', req)
+    fetch(`/api/auth/${action}`, req)
       .then(res => res.json())
       .then(result => {
-        window.location.hash = '#sign-in';
+        if (action === 'sign-up') {
+          window.location.hash = '#sign-in';
+        } else if (result.user && result.token) {
+          onSignIn(result);
+        }
         setUserInfo({ username: '', password: '' });
-      });
+      })
+      .catch(err => console.error(err));
   }
+
+  function handleGuestSignIn(event) {
+    event.preventDefault();
+    const guestInfo = {
+      username: 'guest',
+      password: 'guest'
+    };
+    const req = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(guestInfo)
+    };
+    fetch(`/api/auth/${action}`, req)
+      .then(res => res.json())
+      .then(result => {
+        if (result.user && result.token) {
+          onSignIn(result);
+        }
+      })
+      .catch(err => console.error(err));
+  }
+
+  const formTitle = action === 'sign-up' ? 'Register' : 'Sign In';
+  const alternateActionHref = action === 'sign-up' ? '#sign-in' : '#sign-up';
+  const alternateActionStatement =
+    action === 'sign-up'
+      ? 'Already have an account?'
+      : "Don't have an account?";
+  const alternateActionLinkText = action === 'sign-up' ? 'Sign In' : 'Register';
+  const submitButton = action === 'sign-up' ? 'Register' : 'Sign In';
 
   return (
     <>
-      <h2 className='text-center font-rubik mb-3'>Register</h2>
-      <form className='' onSubmit={handleSubmit}>
+      <h2 className="text-center font-rubik mb-3">{formTitle}</h2>
+      <form className="" onSubmit={handleSubmit}>
         <div className="mb-3">
           <input
             id="username"
@@ -36,7 +74,7 @@ function AuthForm() {
             type="text"
             name="username"
             value={userInfo.username}
-            placeholder='Username'
+            placeholder="Username"
             required
             autoFocus
             onChange={handleChange}
@@ -49,19 +87,37 @@ function AuthForm() {
             type="password"
             name="password"
             value={userInfo.password}
-            placeholder='Password'
+            placeholder="Password"
             required
             onChange={handleChange}
           />
         </div>
         <div className="d-flex justify-content-center align-items-center">
-          <button type="submit" className="btn btn-primary px-4 mb-3 font-rubik ">Register</button>
+          <button
+            className="btn btn-primary mb-3 auth-form-button font-rubik"
+            type="submit"
+          >
+            {submitButton}
+          </button>
         </div>
-        <p className='text-center mb-3'>
-          Already have an account? <a href='#sign-in' className='text-decoration-none'>Sign In</a>
+        <p className="text-center mb-3">
+          {alternateActionStatement}{' '}
+          <a href={alternateActionHref} className="text-decoration-none">
+            {alternateActionLinkText}
+          </a>
         </p>
+        {action === 'sign-in' && (
+          <div className="d-flex justify-content-center align-items-center">
+            <button
+              className="btn btn-primary mb-3 auth-form-button font-rubik"
+              type="button"
+              onClick={handleGuestSignIn}
+            >
+              Guest
+            </button>
+          </div>
+        )}
       </form>
-
     </>
   );
 }

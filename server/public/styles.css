@@ -14,3 +14,7 @@ body {
 .font-rubik {
   font-family: Rubik, sans-serif;
 }
+
+.auth-form-button {
+  width: 7rem;
+}
