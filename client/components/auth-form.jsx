@@ -26,36 +26,43 @@ function AuthForm() {
   }
 
   return (
-    <form className='col-10 col-md-5 col-lg-4 mb-4' onSubmit={handleSubmit}>
-      <div className="mb-3">
-        <input
-          id="username"
-          className="form-control bg-light"
-          type="text"
-          name="username"
-          value={userInfo.username}
-          placeholder='Username'
-          required
-          autoFocus
-          onChange={handleChange}
-        />
-      </div>
-      <div className="mb-3">
-        <input
-          id="password"
-          className="form-control bg-light"
-          type="password"
-          name="password"
-          value={userInfo.password}
-          placeholder='Password'
-          required
-          onChange={handleChange}
-        />
-      </div>
-      <div className="d-flex justify-content-center align-items-center">
-        <button type="submit" className="btn px-4 btn-primary">Register</button>
-      </div>
-    </form>
+    <>
+      <h2 className='text-center font-rubik mb-3'>Register</h2>
+      <form className='' onSubmit={handleSubmit}>
+        <div className="mb-3">
+          <input
+            id="username"
+            className="form-control bg-light"
+            type="text"
+            name="username"
+            value={userInfo.username}
+            placeholder='Username'
+            required
+            autoFocus
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-3">
+          <input
+            id="password"
+            className="form-control bg-light"
+            type="password"
+            name="password"
+            value={userInfo.password}
+            placeholder='Password'
+            required
+            onChange={handleChange}
+          />
+        </div>
+        <div className="d-flex justify-content-center align-items-center">
+          <button type="submit" className="btn btn-primary px-4 mb-3 font-rubik ">Register</button>
+        </div>
+        <p className='text-center mb-3'>
+          Already have an account? <a href='#sign-in' className='text-decoration-none'>Sign In</a>
+        </p>
+      </form>
+
+    </>
   );
 }
 
