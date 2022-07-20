@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import AppDrawer from './app-drawer';
+import { AppContext } from '../lib';
 
 function Header() {
+  const { user } = useContext(AppContext);
+
   return (
     <header>
-      <nav className="navbar navbar-dark py-0 bg-primary">
+      <nav className="navbar navbar-dark bg-primary">
         <div className="container">
-          <a href="#" className="navbar-brand app-name">
-            Evently
-          </a>
+          <a className="navbar-brand py-0 app-name" href="#">Evently</a>
+          {user && <AppDrawer />}
         </div>
       </nav>
     </header>

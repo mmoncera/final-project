@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import Redirect from '../components/redirect';
-import AppContext from '../lib/app-context';
+import { AppContext } from '../lib';
 
 function Home() {
   const { user } = useContext(AppContext);
