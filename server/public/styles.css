@@ -23,3 +23,7 @@ body {
 .nav-link:hover {
   background-color: #e8e8e8;
 }
+
+.home-container-padding {
+  padding-top: 9rem;
+}
