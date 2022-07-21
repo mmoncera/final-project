@@ -65,7 +65,7 @@ function AuthForm(props) {
 
   return (
     <>
-      <h2 className="text-center font-rubik mb-3">{formTitle}</h2>
+      <h1 className="text-center mb-4 font-rubik">{formTitle}</h1>
       <form className="" onSubmit={handleSubmit}>
         <div className="mb-3">
           <input
@@ -102,7 +102,7 @@ function AuthForm(props) {
         </div>
         <p className="text-center mb-3">
           {alternateActionStatement}{' '}
-          <a href={alternateActionHref} className="text-decoration-none">
+          <a href={alternateActionHref} className="text-decoration-none font-rubik">
             {alternateActionLinkText}
           </a>
         </p>
