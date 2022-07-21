@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import jwtDecode from 'jwt-decode';
-import Header from './components/header';
-import PageContainer from './components/page-container';
 import Auth from './pages/auth';
 import Home from './pages/home';
-import parseRoute from './lib/parse-route';
-import AppContext from './lib/app-context';
+import Header from './components/header';
+import PageContainer from './components/page-container';
+import { parseRoute, AppContext } from './lib';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -28,6 +27,11 @@ function App() {
     setUser(user);
   }
 
+  function handleSignOut() {
+    window.localStorage.removeItem('react-context-jwt');
+    setUser(null);
+  }
+
   function renderPage() {
     const { path } = route;
     if (path === '') {
@@ -38,7 +42,7 @@ function App() {
     }
   }
 
-  const contextValue = { user, route, handleSignIn };
+  const contextValue = { user, route, handleSignIn, handleSignOut };
 
   if (isAuthorizing) {
     return null;

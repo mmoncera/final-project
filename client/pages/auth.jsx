@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import AuthForm from '../components/auth-form';
 import Redirect from '../components/redirect';
-import AppContext from '../lib/app-context';
+import { AppContext } from '../lib';
 
 function Auth() {
   const { user, route, handleSignIn } = useContext(AppContext);

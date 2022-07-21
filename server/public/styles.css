@@ -4,11 +4,11 @@ body {
 
 .app-name {
   font-family: "Just Another Hand", cursive;
-  font-size: 2.2rem;
+  font-size: 2.6rem;
 }
 
 .page-height {
-  min-height: 100vh;
+  min-height: calc(100vh - 5rem);
 }
 
 .font-rubik {
@@ -17,4 +17,8 @@ body {
 
 .auth-form-button {
   width: 7rem;
+}
+
+.nav-item:hover {
+  background-color: #e8e8e8;
 }
