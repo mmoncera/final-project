@@ -66,10 +66,9 @@ function AuthForm(props) {
   return (
     <>
       <h1 className="text-center mb-4 font-rubik">{formTitle}</h1>
-      <form className="" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <input
-            id="username"
             className="form-control bg-light"
             type="text"
             name="username"
@@ -82,7 +81,6 @@ function AuthForm(props) {
         </div>
         <div className="mb-3">
           <input
-            id="password"
             className="form-control bg-light"
             type="password"
             name="password"
