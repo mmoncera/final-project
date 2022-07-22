@@ -52,5 +52,3 @@ function Home() {
 }
 
 export default Home;
-
-// clean up
